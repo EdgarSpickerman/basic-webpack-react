@@ -1,0 +1,16 @@
+const server = require("../server");
+const PORT = process.env.PORT || 3000;
+
+const onListening = () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+}
+
+const onError = error => {
+  console.log("The following error has occured", error);
+}
+
+server
+  .set("port",PORT)
+  .listen(PORT)
+  .on("error",onError)
+  .on("listening", onListening)
